@@ -37,7 +37,7 @@ const LoginForm = () => {
     }
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 text-white">
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 ">
             <div className="form-control">
                 <label className="label">
                     <span className="label-text text-white">Usuario</span>
