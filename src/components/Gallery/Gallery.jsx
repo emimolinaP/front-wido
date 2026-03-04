@@ -9,7 +9,6 @@ const Gallery = () => {
   const [selected, setSelected] = useState(null)
   const { loading, userInfo } = useUser()
 
-  const baseUrl = import.meta.env.VITE_BACKEND_URL.replace("/api", "")
 
   useEffect(() => {
     const fetchItems = async () => {
@@ -40,16 +39,16 @@ const Gallery = () => {
           >
             {/* Imagen */}
             <img
-              src={`${baseUrl}${item.imageUrl}`}
+              src={`${item.image}`}
               className="w-full aspect-square object-cover transition duration-500 group-hover:scale-110 group-hover:brightness-50"
             />
 
             {/* Overlay */}
             <div className="absolute inset-0 flex flex-col justify-end p-6 opacity-0 group-hover:opacity-100 transition duration-500">
-              <h2 className="text-xl font-bold text-white">
+              <h2 className="text-xl font-bold text-black">
                 {item.title}
               </h2>
-              <p className="text-sm text-gray-300">
+              <p className="text-sm text-black">
                 {item.description}
               </p>
             </div>
@@ -81,7 +80,7 @@ const Gallery = () => {
             onClick={(e) => e.stopPropagation()}
           >
             <img
-              src={`${baseUrl}${selected.imageUrl}`}
+              src={`${selected.image}`}
               className="w-full max-h-[85vh] object-contain rounded-2xl shadow-2xl animate-fadeIn"
             />
 
