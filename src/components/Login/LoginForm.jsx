@@ -37,10 +37,10 @@ const LoginForm = () => {
     }
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 text-white">
             <div className="form-control">
                 <label className="label">
-                    <span className="label-text">Usuario</span>
+                    <span className="label-text text-white">Usuario</span>
                 </label>
                 <input
                     {...register('username', {
@@ -68,7 +68,7 @@ const LoginForm = () => {
 
             <div className="form-control relative">
                 <label className="label">
-                    <span className="label-text">Contraseña</span>
+                    <span className="label-text text-white">Contraseña</span>
                 </label>
                 <input
                     {...register('password', {

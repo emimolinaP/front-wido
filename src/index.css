@@ -12,3 +12,18 @@
     ) {
     scrollbar-gutter: auto;
 }
+
+
+@font-face {
+  font-family: "titulo-wido";
+  src: url("assets/fonts/Inter-Black.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "subtitulo-wido";
+  src: url("assets/fonts/Montserrat-Bold.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}

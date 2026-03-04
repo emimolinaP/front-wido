@@ -1,77 +1,60 @@
 import { Link } from 'react-router'
 import './navbar.css'
-import { useUser } from '../../context/UserContext'
-import toast from 'react-hot-toast'
-import { logoutService } from '../../services/authServices'
+
+import { useEffect, useState } from 'react'
+
 const Navbar = () => {
-    const { loading, userInfo,setUserInfo } = useUser()
-    const handleLogout = async () => {
-        try {
-            await logoutService()
-            setUserInfo({})
-            toast.success('Sesión cerrada correctamente')
-        } catch (error) {
-            console.error('Error al cerrar sesión', error)
-            toast.error('Error al cerrar sesión intente más tarde')
+   
+    const [showNav, setShowNav] = useState(true)
+
+    useEffect(() => {
+        let lastScrollY = window.scrollY
+
+        const handleScroll = () => {
+            if (window.scrollY > lastScrollY) {
+                setShowNav(false)
+            } else {
+                setShowNav(true)
+            }
+            lastScrollY = window.scrollY
         }
-    }
+
+        window.addEventListener('scroll', handleScroll)
+
+        return () => window.removeEventListener('scroll', handleScroll)
+    }, [])
+
+    
     return (
-        <div className="navbar shadow-md w-full">
-            <div className="flex-none">
-                <div className="dropdown">
-                    <label tabIndex={0} className="btn btn-square btn-ghost">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            className="inline-block h-5 w-5 stroke-current"
-                        >
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth="2"
-                                d="M4 6h16M4 12h16M4 18h16"
-                            />
-                        </svg>
-                    </label>
-
-                    <ul
-                        tabIndex={0}
-                        className="menu menu-sm dropdown-content mt-3 z-[20] p-2 shadow bg-base-100 rounded-box w-52"
-                    >
-                        <li>
-                            <Link to="/rugs">Pedir mi alfombra!</Link>
-                        </li>
-
-                        {loading ? null : userInfo?.username ? (
-                            <li>
-                                <a onClick={handleLogout}>Cerrar sesión</a>
-                            </li>
-                        ) : (
-                            <li>
-                                <Link to="/login">Login</Link>
-                            </li>
-                        )}
-                        {!loading && userInfo?.username && (
-                            <li>
-                                <Link to={'/dashboard'}>
-                                    Administración
-                                </Link>
-                            </li>
-                        )}
-                    </ul>
-                </div>
-            </div>
-
-            <div className="flex-1">
+        <div
+            className={` h-52 md: wido-nav sticky top-0 z-50 backdrop-blur-md transition-transform duration-300 ${
+                showNav ? 'translate-y-0' : '-translate-y-full'
+            }`}
+        >
+            <div className="border-b  py-4 flex justify-center border-[#331947]">
                 <Link
-                    className="titulo btn btn-ghost text-5xl text-green-800 font-serif"
                     to="/"
+                    className="hover:opacity-80 transition duration-300"
                 >
-                    Wido Rugs
+                    <img
+                        src="./images/logo.png"
+                        alt="Wido Rugs"
+                        className="h-28  md:wido-img"
+                    />
                 </Link>
             </div>
-            
+
+            <div className="flex flex-col md:justify-start md:items-start gap-4 botones-wido">
+                <Link
+                    to="/rugs"
+                    className="btn btn-login btn-ghost px-6 text-[#331947]"
+                >
+                    Pedir mi alfombra
+                </Link>
+
+                </div>
+               
+               
         </div>
     )
 }

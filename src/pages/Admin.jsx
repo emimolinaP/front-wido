@@ -44,15 +44,15 @@ const AdminGallery = () => {
         <div className="flex justify-center items-center min-h-screen  p-6">
             <div className="card w-full max-w-lg bg-base-100 shadow-2xl">
                 <div className="card-body">
-                    <h2 className="card-title text-2xl mb-4">
+                    <h2 className="card-title text-2xl mb-4 text-white">
                         Subir Nuevo Pedido
                     </h2>
 
                     <form onSubmit={handleSubmit} className="space-y-4">
-                        {/* Título */}
+
                         <div className="form-control">
                             <label className="label">
-                                <span className="label-text">Título</span>
+                                <span className="label-text text-white">Título</span>
                             </label>
                             <input
                                 type="text"
@@ -64,10 +64,10 @@ const AdminGallery = () => {
                             />
                         </div>
 
-                        {/* Descripción */}
+
                         <div className="form-control">
                             <label className="label">
-                                <span className="label-text">Descripción</span>
+                                <span className="label-text text-white">Descripción</span>
                             </label>
                             <textarea
                                 className="textarea textarea-bordered"
@@ -78,10 +78,10 @@ const AdminGallery = () => {
                             />
                         </div>
 
-                        {/* Imagen */}
+
                         <div className="form-control">
                             <label className="label">
-                                <span className="label-text">Imagen</span>
+                                <span className="label-text text-white">Imagen</span>
                             </label>
                             <input
                                 type="file"
@@ -92,10 +92,9 @@ const AdminGallery = () => {
                             />
                         </div>
 
-                        {/* Preview */}
                         {preview && (
                             <div className="mt-4">
-                                <p className="mb-2 font-semibold">
+                                <p className="mb-2 font-semibold text-white">
                                     Vista previa:
                                 </p>
                                 <img
@@ -105,7 +104,6 @@ const AdminGallery = () => {
                             </div>
                         )}
 
-                        {/* Botón */}
                         <div className="card-actions justify-end mt-4">
                             <button
                                 type="submit"
